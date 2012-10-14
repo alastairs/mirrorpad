@@ -43,3 +43,35 @@
         <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
     </li>
 </ol>
+
+<div><textarea id="enteredText" data-bind="value: enteredText, valueUpdate: 'afterkeypress', event: { keyup: onKeyPress }"></textarea></div>
+<p data-bind="text: enteredText"></p>
+<p id="eventDetails"></p>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/json2.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.signalR-0.5.3.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.1.0.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/signalr/hubs")"></script>
+
+<script type="text/javascript">
+    var MIRRORPAD = MIRRORPAD || {};
+    
+    MIRRORPAD.makeViewModel = function() {
+        var self = {
+            enteredText: ko.observable($("#enteredText").val()),
+            onKeyPress: function (data, event) {
+                $("#eventDetails").text(String.fromCharCode(event.keyCode));
+            }
+        };
+
+        return self;
+    };
+
+    (function($) {
+        $(function() {
+            ko.applyBindings(MIRRORPAD.makeViewModel());
+            $.connection.hub.start();
+        });
+    })(jQuery);
+</script>
