@@ -1,6 +1,7 @@
 # Output directories
 [Bb]in
 [Oo]bj
+App_Data
 
 # ReSharper files
 _ReSharper.*/
