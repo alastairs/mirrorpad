@@ -6,6 +6,9 @@ App_Data
 # ReSharper files
 _ReSharper.*/
 
+# NCrunch files
+_NCrunch_*/
+
 # User files
 *.user
 *.suo
