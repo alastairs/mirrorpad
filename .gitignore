@@ -1,0 +1,14 @@
+# Output directories
+[Bb]in
+[Oo]bj
+
+# ReSharper files
+_ReSharper.*/
+
+# User files
+*.user
+*.suo
+
+# NuGet Packages
+packages/
+!packages/repositories.config
